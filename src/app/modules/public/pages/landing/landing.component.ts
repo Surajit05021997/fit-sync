@@ -10,15 +10,9 @@ export class LandingComponent {
   otpCode: number | null = null;
   otpSent: boolean = false;
 
-  signInWithGoogle() {
+  signInWithGoogle() {}
 
-  }
+  sendOTP() {}
 
-  sendOTP() {
-
-  }
-
-  verifyOTP() {
-    
-  }
+  verifyOTP() {}
 }

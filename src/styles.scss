@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
 /* css variables */
 :root {
@@ -9,38 +9,41 @@
   --clr-neutral-200: #ececec;
   --clr-neutral-300: #dedede;
   --clr-neutral-600: #959595;
-  --clr-neutral-700: #3D4152;
+  --clr-neutral-700: #3d4152;
   --clr-neutral-900: #000000;
-  --clr-success: #65B741;
-  --clr-error: #EE4E4E;
-  --clr-primary-400: #363F85;
-  --clr-primary-500: #272A4B;
+  --clr-success: #65b741;
+  --clr-error: #ee4e4e;
+  --clr-primary-400: #363f85;
+  --clr-primary-500: #272a4b;
 
-   /* font family */
-   --ff-primary: "Roboto", sans-serif;
+  /* font family */
+  --ff-primary: "Roboto", sans-serif;
 
-   /* font weight */
-   --fw-light: 300;
-   --fw-regular: 400;
-   --fw-medium: 500;
-   --fw-bold: 700;
-   --fw-black: 900;
- 
-   /* font size */
-   --fs-100: .875rem;
-   --fs-200: 1rem;
-   --fs-300: 1.125rem;
-   --fs-350: 1.25rem;
-   --fs-400: 1.5rem;
-   --fs-500: 2rem;
-   --fs-600: 2.5rem;
-   --fs-700: 3rem;
-   --fs-800: 5.5rem;
-   --fs-900: 6.25rem;
+  /* font weight */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* font size */
+  --fs-100: 0.875rem;
+  --fs-200: 1rem;
+  --fs-300: 1.125rem;
+  --fs-350: 1.25rem;
+  --fs-400: 1.5rem;
+  --fs-500: 2rem;
+  --fs-600: 2.5rem;
+  --fs-700: 3rem;
+  --fs-750: 4rem;
+  --fs-800: 5.5rem;
+  --fs-900: 6.25rem;
 }
 
 /** css reset **/
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   box-sizing: border-box;
 }
@@ -49,11 +52,17 @@ a {
   text-decoration: none;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
+  padding: 0;
 }
 
-img, picture, svg, video, canvas {
+img,
+picture,
+svg,
+video,
+canvas {
   display: block;
   max-width: 100%;
 }
@@ -62,7 +71,8 @@ button {
   font-family: inherit;
 }
 
-input, textarea {
+input,
+textarea {
   font-family: inherit;
 }
 
@@ -77,4 +87,12 @@ body {
 a {
   color: var(--clr-neutral-700);
   -webkit-tap-highlight-color: transparent;
+}
+
+
+/* utility styles */
+.main-container {
+  max-width: 1400px;
+  margin: auto;
+  padding-inline: 1rem;
 }

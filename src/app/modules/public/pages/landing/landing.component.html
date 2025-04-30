@@ -1,42 +1,59 @@
-<section class="landing">
-  <div class="logo">🏋️‍♂️ FitSync</div>
-  <p class="tagline">Track workouts. Build muscle. Stay consistent.</p>
+<section class="landing-page">
+  <div class="main-container">
+    <div class="tagline">
+      <div class="line-1">Track Workouts</div>
+      <div class="line-2">Build Muscle</div>
+      <div class="line-3">Stay Consistent</div>
+    </div>
+    <ul class="feature-list">
+      <li class="feature">
+        <div class="feature-brief">Log your sets & reps</div>
+        <img src="./assets/icons/logs.svg" alt="" class="feature-icon" />
+      </li>
+      <li class="feature">
+        <div class="feature-brief">Track weekly progress</div>
+        <img src="./assets/icons/progress.svg" alt="" class="feature-icon" />
+      </li>
+      <li class="feature">
+        <div class="feature-brief">Track nutrition</div>
+        <img src="./assets/icons/food.svg" alt="" class="feature-icon" />
+      </li>
+      <li class="feature">
+        <div class="feature-brief">Control your YouTube playlist</div>
+        <img src="./assets/icons/music.svg" alt="" class="feature-icon" />
+      </li>
+    </ul>
 
-  <ul class="features">
-    <li>📊 Log your sets & reps</li>
-    <li>📈 Track weekly progress</li>
-    <li>🎵 Control your YouTube playlist</li>
-  </ul>
+    <!-- Google Sign-In -->
+    <button class="google-signin" (click)="signInWithGoogle()">
+      Sign In with Google
+    </button>
 
-  <!-- Google Sign-In -->
-  <button class="google-signin" (click)="signInWithGoogle()">
-    Sign In with Google
-  </button>
+    <!-- Divider -->
+    <div class="divider">or</div>
 
-  <!-- Divider -->
-  <div class="divider">or</div>
+    <!-- Phone Login -->
+    <form (ngSubmit)="sendOTP()" *ngIf="!otpSent">
+      <input
+        type="tel"
+        [(ngModel)]="phoneNumber"
+        name="phone"
+        placeholder="Enter mobile number"
+        required
+      />
+      <div id="recaptcha-container"></div>
+      <button type="submit">Send OTP</button>
+    </form>
 
-  <!-- Phone Login -->
-  <form (ngSubmit)="sendOTP()" *ngIf="!otpSent">
-    <input
-      type="tel"
-      [(ngModel)]="phoneNumber"
-      name="phone"
-      placeholder="Enter mobile number"
-      required
-    />
-    <div id="recaptcha-container"></div>
-    <button type="submit">Send OTP</button>
-  </form>
-
-  <form (ngSubmit)="verifyOTP()" *ngIf="otpSent">
-    <input
-      type="text"
-      [(ngModel)]="otpCode"
-      name="otp"
-      placeholder="Enter OTP"
-      required
-    />
-    <button type="submit">Verify OTP</button>
-  </form>
+    <form (ngSubmit)="verifyOTP()" *ngIf="otpSent">
+      <input
+        type="text"
+        [(ngModel)]="otpCode"
+        name="otp"
+        placeholder="Enter OTP"
+        required
+      />
+      <button type="submit">Verify OTP</button>
+    </form>
+  </div>
 </section>

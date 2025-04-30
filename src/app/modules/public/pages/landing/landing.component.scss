@@ -1,0 +1,45 @@
+.landing-page {
+  .tagline {
+    margin-block: 3rem;
+    .line-1 {
+      font-size: var(--fs-500);
+      font-weight: var(--fw-bold);
+    }
+
+    .line-2 {
+      font-size: var(--fs-700);
+      font-weight: var(--fw-bold);
+    }
+
+    .line-3 {
+      font-size: var(--fs-750);
+      font-weight: var(--fw-bold);
+    }
+  }
+
+  .feature-list {
+    .feature {
+      margin-block: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1rem;
+
+      .feature-brief {
+        width: 50rem;
+        padding: 1rem;
+        text-align: end;
+        background: linear-gradient(
+          270deg,
+          var(--clr-primary-500) 0%,
+          var(--clr-primary-400) 25%,
+          var(--clr-neutral-100) 100%
+        );
+        color: var(--clr-neutral-200);
+      }
+
+      .feature-icon {
+      }
+    }
+  }
+}
