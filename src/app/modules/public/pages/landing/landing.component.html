@@ -1,0 +1,42 @@
+<section class="landing">
+  <div class="logo">🏋️‍♂️ FitSync</div>
+  <p class="tagline">Track workouts. Build muscle. Stay consistent.</p>
+
+  <ul class="features">
+    <li>📊 Log your sets & reps</li>
+    <li>📈 Track weekly progress</li>
+    <li>🎵 Control your YouTube playlist</li>
+  </ul>
+
+  <!-- Google Sign-In -->
+  <button class="google-signin" (click)="signInWithGoogle()">
+    Sign In with Google
+  </button>
+
+  <!-- Divider -->
+  <div class="divider">or</div>
+
+  <!-- Phone Login -->
+  <form (ngSubmit)="sendOTP()" *ngIf="!otpSent">
+    <input
+      type="tel"
+      [(ngModel)]="phoneNumber"
+      name="phone"
+      placeholder="Enter mobile number"
+      required
+    />
+    <div id="recaptcha-container"></div>
+    <button type="submit">Send OTP</button>
+  </form>
+
+  <form (ngSubmit)="verifyOTP()" *ngIf="otpSent">
+    <input
+      type="text"
+      [(ngModel)]="otpCode"
+      name="otp"
+      placeholder="Enter OTP"
+      required
+    />
+    <button type="submit">Verify OTP</button>
+  </form>
+</section>
