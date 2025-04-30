@@ -1,5 +1,80 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+/* css variables */
+:root {
+  /* colors */
+  --clr-neutral-100: #ffffff;
+  --clr-neutral-150: #f3f3f3;
+  --clr-neutral-170: #f0f6ff;
+  --clr-neutral-200: #ececec;
+  --clr-neutral-300: #dedede;
+  --clr-neutral-600: #959595;
+  --clr-neutral-700: #3D4152;
+  --clr-neutral-900: #000000;
+  --clr-success: #65B741;
+  --clr-error: #EE4E4E;
+  --clr-primary-400: #363F85;
+  --clr-primary-500: #272A4B;
+
+   /* font family */
+   --ff-primary: "Roboto", sans-serif;
+
+   /* font weight */
+   --fw-light: 300;
+   --fw-regular: 400;
+   --fw-medium: 500;
+   --fw-bold: 700;
+   --fw-black: 900;
+ 
+   /* font size */
+   --fs-100: .875rem;
+   --fs-200: 1rem;
+   --fs-300: 1.125rem;
+   --fs-350: 1.25rem;
+   --fs-400: 1.5rem;
+   --fs-500: 2rem;
+   --fs-600: 2.5rem;
+   --fs-700: 3rem;
+   --fs-800: 5.5rem;
+   --fs-900: 6.25rem;
+}
+
+/** css reset **/
+*, *::before, *::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img, picture, svg, video, canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+}
+
+/* general styling */
 body {
-  background: #f4f4f4;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-200);
+  color: var(--clr-neutral-700);
+  line-height: 1.4;
+}
+
+a {
+  color: var(--clr-neutral-700);
+  -webkit-tap-highlight-color: transparent;
 }
