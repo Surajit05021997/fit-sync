@@ -13,6 +13,8 @@
   --clr-neutral-900: #000000;
   --clr-success: #65b741;
   --clr-error: #ee4e4e;
+  --clr-primary-200: #4e60ec;
+  --clr-primary-300: #3e4ba8;
   --clr-primary-400: #363f85;
   --clr-primary-500: #272a4b;
 
@@ -69,6 +71,7 @@ canvas {
 
 button {
   font-family: inherit;
+  font-size: inherit;
 }
 
 input,

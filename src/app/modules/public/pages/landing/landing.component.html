@@ -25,9 +25,7 @@
     </ul>
 
     <!-- Google Sign-In -->
-    <button class="google-signin" (click)="signInWithGoogle()">
-      Sign In with Google
-    </button>
+    <app-fs-button class="google-signin" buttonText="Sign In with Google" (click)="signInWithGoogle()"></app-fs-button>
 
     <!-- Divider -->
     <div class="divider">or</div>
@@ -42,7 +40,7 @@
         required
       />
       <div id="recaptcha-container"></div>
-      <button type="submit">Send OTP</button>
+      <app-fs-button type="submit" buttonText="Send OTP"></app-fs-button>
     </form>
 
     <form (ngSubmit)="verifyOTP()" *ngIf="otpSent">
