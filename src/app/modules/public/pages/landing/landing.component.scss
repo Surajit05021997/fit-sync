@@ -45,7 +45,7 @@
   .sign-up-form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
 
     .divider {
@@ -83,6 +83,7 @@
 
     .sign-up-form {
       flex-direction: row;
+      gap: 2rem;
 
       .google-signin-btn {
         align-self: center;
