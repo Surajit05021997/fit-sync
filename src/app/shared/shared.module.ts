@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { fsButtonComponent } from './components';
+import { fsButtonComponent, fsInputComponent } from './components';
 
 @NgModule({
-  declarations: [fsButtonComponent],
-  exports: [fsButtonComponent],
+  declarations: [fsButtonComponent, fsInputComponent],
+  exports: [fsButtonComponent, fsInputComponent],
 })
 export class SharedModule {}

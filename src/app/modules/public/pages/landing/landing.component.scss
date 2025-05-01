@@ -18,6 +18,8 @@
   }
 
   .feature-list {
+    margin-block: 3rem;
+
     .feature {
       margin-block: 1rem;
       display: flex;
@@ -37,6 +39,22 @@
         );
         color: var(--clr-neutral-200);
       }
+    }
+  }
+
+  .sign-up-form {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    .divider {
+      font-size: var(--fs-300);
+    }
+
+    .send-otp-form {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
     }
   }
 }

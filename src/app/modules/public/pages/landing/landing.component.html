@@ -24,24 +24,27 @@
       </li>
     </ul>
 
-    <!-- Google Sign-In -->
-    <app-fs-button class="google-signin" buttonText="Sign In with Google" (click)="signInWithGoogle()"></app-fs-button>
+    <div class="sign-up-form">
+      <!-- Phone Login -->
+      <form (ngSubmit)="sendOTP()" *ngIf="!otpSent" class="send-otp-form">
+        <app-fs-input
+          name="phone"
+          placeholder="Enter mobile number"
+        ></app-fs-input>
+        <div id="recaptcha-container"></div>
+        <app-fs-button type="submit" buttonText="Send OTP"></app-fs-button>
+      </form>
 
-    <!-- Divider -->
-    <div class="divider">or</div>
+      <!-- Divider -->
+      <div class="divider">OR</div>
 
-    <!-- Phone Login -->
-    <form (ngSubmit)="sendOTP()" *ngIf="!otpSent">
-      <input
-        type="tel"
-        [(ngModel)]="phoneNumber"
-        name="phone"
-        placeholder="Enter mobile number"
-        required
-      />
-      <div id="recaptcha-container"></div>
-      <app-fs-button type="submit" buttonText="Send OTP"></app-fs-button>
-    </form>
+      <!-- Google Sign-In -->
+      <app-fs-button
+        class="google-signin"
+        buttonText="Sign Up with Google"
+        (click)="signInWithGoogle()"
+      ></app-fs-button>
+    </div>
 
     <form (ngSubmit)="verifyOTP()" *ngIf="otpSent">
       <input
