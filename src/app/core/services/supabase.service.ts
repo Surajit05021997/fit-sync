@@ -13,7 +13,11 @@ export class SupabaseService {
     );
   }
 
-  insertUser(user: { id: string; name: string; email: string }) {
+  insertUser(user: { uid: string; name: string; email: string }) {
     return this.supabase.from('users').upsert([user], { onConflict: 'id' });
+  }
+
+  getUserById(uid: string) {
+    return this.supabase.from('users').select('*').eq('uid', uid).limit(1);
   }
 }

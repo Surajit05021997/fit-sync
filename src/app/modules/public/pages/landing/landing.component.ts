@@ -32,15 +32,30 @@ export class LandingComponent {
         const user = result.user;
 
         if (user) {
-          // Store in Supabase
-          await this.supabaseService.insertUser({
-            id: user.uid,
-            name: user.displayName ?? '',
-            email: user.email ?? '',
-          });
-        }
+          try {
+            const { data: existingUser, error: getUserByIdError } =
+              await this.supabaseService.getUserById(user.uid);
 
-        this.router.navigate(['/dashboard']);
+            // Store in Supabase if user does not exist in supabase
+            if (!existingUser || existingUser.length === 0) {
+              const { error: insertUserError } =
+                await this.supabaseService.insertUser({
+                  uid: user.uid,
+                  name: user.displayName ?? '',
+                  email: user.email ?? '',
+                });
+
+              if (insertUserError) {
+                throw insertUserError;
+              }
+            } else if (getUserByIdError) {
+              throw getUserByIdError;
+            }
+          } catch (error) {
+            console.log('Something went wrong with supabase!', error);
+          }
+          this.router.navigate(['/dashboard']);
+        }
       })
       .catch((error) => {
         console.error('Google sign-in error:', error);
