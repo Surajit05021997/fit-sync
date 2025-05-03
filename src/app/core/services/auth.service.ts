@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { Observable } from 'rxjs';
 
 import { SupabaseService } from 'src/app/core/services';
 
@@ -49,5 +50,9 @@ export class AuthService {
       console.log('Something went wrong!', error);
       return null;
     }
+  }
+
+  getLoggedInUser(): Observable<firebase.User | null> {
+    return this.afAuth.authState;
   }
 }

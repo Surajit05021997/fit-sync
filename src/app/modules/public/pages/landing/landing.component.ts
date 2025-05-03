@@ -24,9 +24,9 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     // Check if user is logged in or not. If logged in then redirect user to dashboard page.
-    const obs = this.afAuth.authState.pipe(map((user) => !!user));
-    obs.subscribe((isUserLoggedIn) => {
-      if (isUserLoggedIn) {
+    const obs = this.authService.getLoggedInUser();
+    obs.subscribe((user) => {
+      if (user) {
         this.router.navigate(['/dashboard']);
       }
     });
