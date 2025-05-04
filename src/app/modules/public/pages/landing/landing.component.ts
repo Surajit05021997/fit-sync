@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/core/services';
+import { SpinnerService } from 'src/app/shared/services';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-landing',
@@ -19,16 +19,18 @@ export class LandingComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private afAuth: AngularFireAuth
+    private spinnerService: SpinnerService
   ) {}
 
   ngOnInit() {
     // Check if user is logged in or not. If logged in then redirect user to dashboard page.
+    this.spinnerService.showSpinner();
     const obs = this.authService.getLoggedInUser();
     obs.subscribe((user) => {
       if (user) {
         this.router.navigate(['/dashboard']);
       }
+      this.spinnerService.hideSpinner();
     });
   }
 

@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './fs-input.component.html',
   styleUrls: ['./fs-input.component.scss'],
 })
-export class fsInputComponent {
+export class FsInputComponent {
   @Input() name: string = '';
   @Input() placeholder: string = '';
 }
