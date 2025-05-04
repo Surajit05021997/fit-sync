@@ -1,5 +1,5 @@
 <section class="dashboard">
-  <h2>Welcome back, {{ userName }}</h2>
+  <h2>Welcome back, {{ userDetails ? userDetails.displayName : "User" }}</h2>
 
   <div class="stats">
     <div class="stat">Weight: 70 kg</div>

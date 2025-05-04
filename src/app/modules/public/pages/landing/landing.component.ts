@@ -25,8 +25,7 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     // Check if user is logged in or not. If logged in then redirect user to dashboard page.
     this.spinnerService.showSpinner();
-    const obs = this.authService.getLoggedInUser();
-    obs.subscribe((user) => {
+    this.authService.user$.subscribe((user) => {
       if (user) {
         this.router.navigate(['/dashboard']);
       }

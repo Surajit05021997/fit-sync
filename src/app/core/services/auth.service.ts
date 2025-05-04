@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { SupabaseService } from 'src/app/core/services';
 
@@ -11,6 +11,9 @@ import { SupabaseService } from 'src/app/core/services';
   providedIn: 'root',
 })
 export class AuthService {
+  private userSubject = new BehaviorSubject<firebase.User | null>(null);
+  user$ = this.userSubject.asObservable();
+
   constructor(
     private afAuth: AngularFireAuth,
     private supabaseService: SupabaseService
@@ -52,7 +55,9 @@ export class AuthService {
     }
   }
 
-  getLoggedInUser(): Observable<firebase.User | null> {
-    return this.afAuth.authState;
+  getLoggedInUserFromFirebase(): void {
+    this.afAuth.authState.subscribe((user) => {
+      this.userSubject.next(user);
+    });
   }
 }
