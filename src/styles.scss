@@ -10,6 +10,7 @@
   --clr-neutral-300: #dedede;
   --clr-neutral-600: #959595;
   --clr-neutral-700: #3d4152;
+  --clr-neutral-800: #2d2f3b;
   --clr-neutral-900: #000000;
   --clr-success: #65b741;
   --clr-error: #ee4e4e;
@@ -93,7 +94,6 @@ a {
   color: var(--clr-neutral-700);
   -webkit-tap-highlight-color: transparent;
 }
-
 
 /* utility styles */
 .main-container {

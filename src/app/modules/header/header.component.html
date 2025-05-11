@@ -5,7 +5,15 @@
       <span>fitSync</span>
     </div>
     <div class="user">
-      <img src="./assets/icons/user.svg" alt="User profile icon" />
+      <img
+        class="user-photo"
+        [src]="userDetails?.photoURL"
+        alt="User Profile Image"
+        loading="lazy"
+        (click)="toggleProfileMenu()"
+        (error)="useFallbackUserProfilePhoto($event)"
+      />
+      <app-profile-menu [hidden]="hideProfileMenu"></app-profile-menu>
     </div>
   </div>
 </header>

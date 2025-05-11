@@ -1,0 +1,25 @@
+<div class="profile-menu" [class]="{ hidden: hidden }">
+  <div class="user-details">
+    <img
+      class="profile-photo"
+      [src]="userDetails?.photoURL"
+      alt="User Profile Image"
+      loading="lazy"
+      (error)="useFallbackUserProfilePhoto($event)"
+    />
+    <div class="user-name">
+      {{ userDetails ? userDetails.displayName : "User" }}
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="menu-items">
+    <ul class="menu-item-list">
+      <li>Profile</li>
+      <li>Settings</li>
+    </ul>
+  </div>
+  <div class="divider"></div>
+  <div class="logout">
+    <div>Logout</div>
+  </div>
+</div>

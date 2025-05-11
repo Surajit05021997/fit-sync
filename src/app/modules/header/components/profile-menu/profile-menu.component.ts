@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services';
 import firebase from 'firebase/compat/app';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: 'app-profile-menu',
+  templateUrl: './profile-menu.component.html',
+  styleUrls: ['profile-menu.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class ProfileMenuComponent implements OnInit {
   user$ = this.authService.user$;
   userDetails: firebase.User | null = null;
-  hideProfileMenu: boolean = true;
+
+  @Input() hidden: boolean = true;
 
   constructor(private authService: AuthService) {}
 
@@ -22,9 +23,5 @@ export class HeaderComponent implements OnInit {
 
   useFallbackUserProfilePhoto(event: Event) {
     (event.target as HTMLImageElement).src = './assets/icons/user.svg';
-  }
-
-  toggleProfileMenu() {
-    this.hideProfileMenu = !this.hideProfileMenu;
   }
 }
