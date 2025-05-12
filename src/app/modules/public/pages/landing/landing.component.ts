@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services';
 import { SpinnerService } from 'src/app/shared/services';
 
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',

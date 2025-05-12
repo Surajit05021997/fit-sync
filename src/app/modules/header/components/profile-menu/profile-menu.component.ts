@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services';
+import { Router } from '@angular/router';
+import { SpinnerService } from 'src/app/shared/services';
 import firebase from 'firebase/compat/app';
 
 @Component({
@@ -13,7 +15,11 @@ export class ProfileMenuComponent implements OnInit {
 
   @Input() hidden: boolean = true;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private spinnerService: SpinnerService,
+  ) {}
 
   ngOnInit(): void {
     this.user$.subscribe((user) => {
@@ -23,5 +29,21 @@ export class ProfileMenuComponent implements OnInit {
 
   useFallbackUserProfilePhoto(event: Event) {
     (event.target as HTMLImageElement).src = './assets/icons/user.svg';
+  }
+
+  onLogout() {
+    this.spinnerService.showSpinner();
+    this.authService
+      .logout()
+      .then(() => {
+        this.router.navigate(['/']);
+      })
+      .catch((error) => {
+        console.error('Logout Error:', error);
+      })
+      .finally(() => {
+        this.hidden = true;
+        this.spinnerService.hideSpinner();
+      });
   }
 }

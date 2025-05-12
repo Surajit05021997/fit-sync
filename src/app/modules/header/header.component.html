@@ -4,10 +4,10 @@
       <img src="./assets/images/logo.png" alt="FitSync logo" class="logo-img" />
       <span>fitSync</span>
     </div>
-    <div class="user">
+    <div *ngIf="userDetails" class="user">
       <img
         class="user-photo"
-        [src]="userDetails?.photoURL"
+        [src]="userDetails.photoURL"
         alt="User Profile Image"
         loading="lazy"
         (click)="toggleProfileMenu()"

@@ -1,7 +1,7 @@
 .profile-menu {
   position: absolute;
   right: 0;
-  top: 2rem;
+  top: 2.25rem;
   min-width: 15rem;
   width: max-content;
   background-color: var(--clr-neutral-100);
@@ -38,6 +38,13 @@
 
   .logout {
     padding: 1rem;
+
+    .logout-btn {
+      cursor: pointer;
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+    }
   }
 
   .divider {

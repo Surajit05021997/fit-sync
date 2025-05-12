@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { SpinnerService } from 'src/app/shared/services';
 
 import { SupabaseService } from 'src/app/core/services';
 
@@ -16,11 +17,13 @@ export class AuthService {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private supabaseService: SupabaseService
+    private supabaseService: SupabaseService,
+    private spinnerService: SpinnerService
   ) {}
 
   async signInWithGoogle() {
     try {
+      this.spinnerService.showSpinner();
       const result = await this.afAuth.signInWithPopup(
         new firebase.auth.GoogleAuthProvider()
       );
@@ -52,6 +55,8 @@ export class AuthService {
     } catch (error) {
       console.log('Something went wrong!', error);
       return null;
+    } finally {
+      this.spinnerService.hideSpinner();
     }
   }
 
@@ -59,5 +64,9 @@ export class AuthService {
     this.afAuth.authState.subscribe((user) => {
       this.userSubject.next(user);
     });
+  }
+
+  logout(): Promise<void> {
+    return this.afAuth.signOut();
   }
 }
