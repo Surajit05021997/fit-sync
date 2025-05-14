@@ -13,7 +13,10 @@
         (click)="toggleProfileMenu()"
         (error)="useFallbackUserProfilePhoto($event)"
       />
-      <app-profile-menu [hidden]="hideProfileMenu"></app-profile-menu>
+      <app-profile-menu
+        [hidden]="hideProfileMenu"
+        (toggleProfileMenu)="toggleProfileMenu()"
+      ></app-profile-menu>
     </div>
   </div>
 </header>

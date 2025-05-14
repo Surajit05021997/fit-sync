@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/core/services';
 import { Router } from '@angular/router';
 import { SpinnerService } from 'src/app/shared/services';
@@ -14,11 +14,12 @@ export class ProfileMenuComponent implements OnInit {
   userDetails: firebase.User | null = null;
 
   @Input() hidden: boolean = true;
+  @Output() toggleProfileMenu = new EventEmitter<void>();
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private spinnerService: SpinnerService,
+    private spinnerService: SpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +43,7 @@ export class ProfileMenuComponent implements OnInit {
         console.error('Logout Error:', error);
       })
       .finally(() => {
-        this.hidden = true;
+        this.toggleProfileMenu.emit();
         this.spinnerService.hideSpinner();
       });
   }
