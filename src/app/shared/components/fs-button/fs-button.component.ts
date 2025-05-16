@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class FsButtonComponent {
   @Input() buttonText: string = '';
+  @Input() fullWidth: boolean = false;
 }

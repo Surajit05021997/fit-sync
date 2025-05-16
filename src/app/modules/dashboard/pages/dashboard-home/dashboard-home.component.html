@@ -1,13 +1,18 @@
 <section class="dashboard">
-  <h2>Welcome back, {{ userDetails ? userDetails.displayName : "User" }}</h2>
+  <div class="main-container">
+    <h1>
+      Welcome,
+      {{ userDetails ? userDetails.displayName?.trim()?.split(' ')?.[0] : "User" }}
+    </h1>
 
-  <div class="stats">
-    <div class="stat">Weight: 70 kg</div>
-    <div class="stat">Goal: Muscle Gain</div>
-  </div>
+    <div class="stats">
+      <div class="stat">Weight: 70 kg</div>
+      <div class="stat">Goal: Muscle Gain</div>
+    </div>
 
-  <div class="actions">
-    <button>Start Workout</button>
-    <button>View History</button>
+    <div class="actions">
+      <app-fs-button buttonText="Start Workout"></app-fs-button>
+      <app-fs-button buttonText="View History"></app-fs-button>
+    </div>
   </div>
 </section>
