@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from 'src/app/core/services';
+import { AuthService, SupabaseService } from 'src/app/core/services';
 import { SpinnerService } from 'src/app/shared/services';
 
 @Component({
@@ -17,15 +17,24 @@ export class LandingComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    private supabaseService: SupabaseService
   ) {}
 
   ngOnInit() {
     // Check if user is logged in or not. If logged in then redirect user to dashboard page.
     this.spinnerService.showSpinner();
-    this.authService.user$.subscribe((user) => {
+    this.authService.user$.subscribe(async (user) => {
       if (user) {
-        this.router.navigate(['/dashboard']);
+        const isUserRegistrationAlreadyCompleted =
+          await this.supabaseService.isUserRegistrationAlreadyCompleted(
+            user.uid
+          );
+        if (isUserRegistrationAlreadyCompleted) {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/user-registration']);
+        }
       }
       this.spinnerService.hideSpinner();
     });
@@ -33,10 +42,7 @@ export class LandingComponent implements OnInit {
 
   // Google Sign-In
   async signInWithGoogle() {
-    const user = await this.authService.signInWithGoogle();
-    if (user) {
-      this.router.navigate(['/dashboard']);
-    }
+    await this.authService.signInWithGoogle();
   }
 
   sendOTP() {}

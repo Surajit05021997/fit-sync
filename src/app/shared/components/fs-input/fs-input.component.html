@@ -1,1 +1,12 @@
-<input type="text" [name]="name" class="fs-input" [placeholder]="placeholder" />
+<div>
+  <label *ngIf="labelText" [for]="id">{{ labelText }}</label>
+  <input
+    class="fs-input"
+    [value]="value"
+    (input)="onInput($event)"
+    (change)="onChangeEvent($event)"
+    [attr.name]="name"
+    [attr.id]="id"
+    [placeholder]="placeholder"
+  />
+</div>

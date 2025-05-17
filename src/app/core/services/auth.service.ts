@@ -5,6 +5,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { BehaviorSubject } from 'rxjs';
 import { SpinnerService } from 'src/app/shared/services';
+import { Router } from '@angular/router';
 
 import { SupabaseService } from 'src/app/core/services';
 
@@ -18,7 +19,8 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private supabaseService: SupabaseService,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    private router: Router
   ) {}
 
   async signInWithGoogle() {
@@ -32,23 +34,14 @@ export class AuthService {
       const user = result.user;
 
       if (user) {
-        const { data: existingUser, error: getUserByIdError } =
-          await this.supabaseService.getUserById(user.uid);
-
-        // Store in Supabase if user does not exist in supabase
-        if (!existingUser || existingUser.length === 0) {
-          const { error: insertUserError } =
-            await this.supabaseService.insertUser({
-              uid: user.uid,
-              name: user.displayName ?? '',
-              email: user.email ?? '',
-            });
-
-          if (insertUserError) {
-            throw insertUserError;
-          }
-        } else if (getUserByIdError) {
-          throw getUserByIdError;
+        const isUserRegistrationAlreadyCompleted =
+          await this.supabaseService.isUserRegistrationAlreadyCompleted(
+            user.uid
+          );
+        if (!isUserRegistrationAlreadyCompleted) {
+          this.router.navigate(['/user-registration']);
+        } else {
+          this.router.navigate(['./dashboard']);
         }
       }
       return user;
