@@ -64,7 +64,7 @@ export class SupabaseService {
   }
 
   async isUserRegistrationAlreadyCompleted(uid: string): Promise<boolean> {
-    const { data, error } = await this.getUserById(uid);
+    const { data, error } = await this.getRegistrationDetailsById(uid);
     if (error) {
       throw error;
     }

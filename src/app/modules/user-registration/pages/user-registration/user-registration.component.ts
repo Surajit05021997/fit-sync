@@ -51,20 +51,7 @@ export class UserRegistrationComponent implements OnInit {
   async registerUser() {
     try {
       this.spinnerService.showSpinner();
-
       if (this.user) {
-        // store user details in supabase user table
-        const { error: insertUserError } =
-          await this.supabaseService.insertUser({
-            uid: this.user.uid,
-            name: this.user.displayName ?? '',
-            email: this.user.email ?? '',
-            registration_complete: false,
-          });
-        if (insertUserError) {
-          throw insertUserError;
-        }
-
         // store user registration details in supabase registration table
         const { error: insertUserRegistrationDetailsError } =
           await this.supabaseService.insertUserRegistrationDetails({

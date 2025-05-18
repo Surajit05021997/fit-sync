@@ -38,7 +38,24 @@ export class AuthService {
           await this.supabaseService.isUserRegistrationAlreadyCompleted(
             user.uid
           );
-        if (!isUserRegistrationAlreadyCompleted) {
+        const isExistingUser = await this.supabaseService.isExistingUser(
+          user.uid
+        );
+
+        if (!isExistingUser && !isUserRegistrationAlreadyCompleted) {
+          // store user details in supabase user table
+          const { error: insertUserError } =
+            await this.supabaseService.insertUser({
+              uid: user.uid,
+              name: user.displayName ?? '',
+              email: user.email ?? '',
+              registration_complete: false,
+            });
+          if (insertUserError) {
+            throw insertUserError;
+          }
+          this.router.navigate(['/user-registration']);
+        } else if (isExistingUser && !isUserRegistrationAlreadyCompleted) {
           this.router.navigate(['/user-registration']);
         } else {
           this.router.navigate(['./dashboard']);
