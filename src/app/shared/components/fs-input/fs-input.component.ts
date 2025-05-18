@@ -24,6 +24,7 @@ export class FsInputComponent implements ControlValueAccessor {
   @Input() id = '';
   @Input() placeholder = '';
   @Input() labelText = '';
+  @Input() fullWidth: boolean = false;
   @Output() input = new EventEmitter<any>();
   @Output() change = new EventEmitter<any>();
 

@@ -1,7 +1,8 @@
-<div>
+<div class="fs-input-container">
   <label *ngIf="labelText" [for]="id">{{ labelText }}</label>
   <input
     class="fs-input"
+    [ngClass]="{ 'full-width': fullWidth }"
     [value]="value"
     (input)="onInput($event)"
     (change)="onChangeEvent($event)"

@@ -1,36 +1,61 @@
-<div>User Registration</div>
-<h1>Registration Form</h1>
-<p>Please fill in the details.</p>
-<form class="userRegistrationForm">
-  <app-fs-input
-    name="name"
-    placeholder="Name"
-    id="name"
-    [(ngModel)]="userName"
-  ></app-fs-input>
-  <app-fs-input
-    name="age"
-    placeholder="Age"
-    id="age"
-    [(ngModel)]="userAge"
-  ></app-fs-input>
-  <app-fs-input
-    name="height"
-    placeholder="Height im cm"
-    id="height"
-    [(ngModel)]="userHeight"
-  ></app-fs-input>
-  <app-fs-input
-    name="weight"
-    placeholder="Weight"
-    id="weight"
-    [(ngModel)]="userWeight"
-  ></app-fs-input>
-  <app-fs-input
-    name="goal"
-    placeholder="goal"
-    id="goal"
-    [(ngModel)]="userGoal"
-  ></app-fs-input>
-</form>
-<app-fs-button buttonText="Register" (click)="registerUser()"></app-fs-button>
+<div class="user-registration">
+  <div class="main-container">
+    <h1>Registration Form</h1>
+    <p>Please fill in the details.</p>
+    <div class="registration-container">
+      <form class="userRegistrationForm">
+        <app-fs-input
+          name="name"
+          placeholder="Enter your name"
+          id="name"
+          labelText="Name"
+          [(ngModel)]="userName"
+          [fullWidth]="true"
+        ></app-fs-input>
+        <app-fs-input
+          name="age"
+          placeholder="Enter your age"
+          id="age"
+          labelText="Age"
+          [(ngModel)]="userAge"
+          [fullWidth]="true"
+        ></app-fs-input>
+        <app-fs-input
+          name="height"
+          placeholder="Enter your height im cm"
+          id="height"
+          labelText="Height (cm)"
+          [(ngModel)]="userHeight"
+          [fullWidth]="true"
+        ></app-fs-input>
+        <app-fs-input
+          name="weight"
+          placeholder="Enter your weight in kg"
+          id="weight"
+          labelText="Weight (kg)"
+          [(ngModel)]="userWeight"
+          [fullWidth]="true"
+        ></app-fs-input>
+        <app-fs-input
+          name="goal"
+          placeholder="Enter your goal"
+          id="goal"
+          labelText="Goal"
+          [(ngModel)]="userGoal"
+          [fullWidth]="true"
+        ></app-fs-input>
+        <app-fs-button
+          buttonText="Register"
+          (click)="registerUser()"
+          [fullWidth]="true"
+        ></app-fs-button>
+      </form>
+      <div class="registration-info-banner">
+        <p>
+          Fill in your details, and we'll create a personalized diet and workout
+          plan tailored to your goals.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

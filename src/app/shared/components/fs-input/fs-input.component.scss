@@ -1,10 +1,22 @@
-.fs-input {
-  padding: 0.7rem 1.25rem;
-  border-radius: 0;
-  outline: 1px solid var(--clr-neutral-700);
-  border: 0;
+.fs-input-container {
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+  }
 
-  &:focus {
-    outline: 2px solid var(--clr-neutral-700);
+  .fs-input {
+    padding: 0.7rem 1.25rem;
+    border-radius: 0;
+    outline: 1px solid var(--clr-neutral-400);
+    border: 0;
+
+    &.full-width {
+      width: 100%;
+    }
+
+    &:focus {
+      outline: 1px solid var(--clr-neutral-700);
+    }
   }
 }
