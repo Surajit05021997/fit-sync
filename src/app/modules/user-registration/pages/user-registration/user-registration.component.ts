@@ -14,6 +14,7 @@ export class UserRegistrationComponent implements OnInit {
   isExistingUser: boolean = false;
   userName: string = '';
   userAge: number | null = null;
+  userGender: string | null = null;
   userWeight: number | null = null;
   userHeight: number | null = null;
   userGoal: string = '';

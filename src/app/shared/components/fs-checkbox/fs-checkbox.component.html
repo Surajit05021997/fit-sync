@@ -1,0 +1,11 @@
+<label [attr.for]="id" class="fs-checkbox-label">
+  <input
+    type="checkbox"
+    [id]="id"
+    [checked]="checked"
+    [disabled]="disabled"
+    (change)="toggleChecked($event)"
+  />
+  <span class="fs-checkbox-custom"></span>
+  {{ label }}
+</label>

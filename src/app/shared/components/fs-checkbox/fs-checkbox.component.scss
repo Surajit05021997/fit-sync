@@ -1,0 +1,37 @@
+.fs-checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fs-checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.fs-checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #888;
+  border-radius: 4px;
+  margin-right: 8px;
+  background: #fff;
+  position: relative;
+}
+
+.fs-checkbox-label input[type="checkbox"]:checked + .fs-checkbox-custom {
+  background: #007bff;
+  border-color: #007bff;
+}
+
+.fs-checkbox-label input[type="checkbox"]:checked + .fs-checkbox-custom::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

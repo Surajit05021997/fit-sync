@@ -20,6 +20,25 @@
           [(ngModel)]="userAge"
           [fullWidth]="true"
         ></app-fs-input>
+        <div>
+          <div class="field-title">Gender</div>
+          <div class="user-gender">
+            <app-fs-radio
+              [(ngModel)]="userGender"
+              name="gender"
+              [value]="'male'"
+              label="Male"
+              id="male"
+            ></app-fs-radio>
+            <app-fs-radio
+              [(ngModel)]="userGender"
+              name="gender"
+              [value]="'female'"
+              label="Female"
+              id="female"
+            ></app-fs-radio>
+          </div>
+        </div>
         <app-fs-input
           name="height"
           placeholder="Enter your height im cm"
