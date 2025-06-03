@@ -1,8 +1,10 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { AuthService } from 'src/app/core/services';
 import { Router } from '@angular/router';
-import { SpinnerService } from 'src/app/shared/services';
+
 import firebase from 'firebase/compat/app';
+
+import { AuthService } from 'src/app/core/services';
+import { SpinnerService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-profile-menu',

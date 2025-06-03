@@ -3,15 +3,19 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SpinnerService {
-  private spinnerSubject = new BehaviorSubject<boolean>(false);
+  private spinnerSubject = new BehaviorSubject<{
+    visible: boolean;
+    spinnerText?: string;
+  }>({ visible: false });
 
-  spinner$: Observable<boolean> = this.spinnerSubject.asObservable();
+  spinner$: Observable<{ visible: boolean; spinnerText?: string }> =
+    this.spinnerSubject.asObservable();
 
-  showSpinner() {
-    this.spinnerSubject.next(true);
+  showSpinner(spinnerText?: string) {
+    this.spinnerSubject.next({ visible: true, spinnerText: spinnerText });
   }
 
   hideSpinner() {
-    this.spinnerSubject.next(false);
+    this.spinnerSubject.next({ visible: false, spinnerText: '' });
   }
 }

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import { BehaviorSubject } from 'rxjs';
-import { SpinnerService } from 'src/app/shared/services';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
+import 'firebase/compat/auth';
+import firebase from 'firebase/compat/app';
+import { BehaviorSubject } from 'rxjs';
+
+import { SpinnerService } from 'src/app/shared/services';
 import { SupabaseService } from 'src/app/core/services';
 
 @Injectable({
