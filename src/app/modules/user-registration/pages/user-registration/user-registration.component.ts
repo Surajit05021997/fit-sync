@@ -116,27 +116,27 @@ export class UserRegistrationComponent implements OnInit {
           },
         });
 
-      // if (this.user) {
-      //   // store user registration details in supabase registration table
-      //   const { error: insertUserRegistrationDetailsError } =
-      //     await this.supabaseService.insertUserRegistrationDetails({
-      //       uid: this.user.uid,
-      //       name: this.userName,
-      //       age: this.userAge,
-      //       gender: this.userGender,
-      //       height: this.userHeight,
-      //       weight: this.userWeight,
-      //       goal: this.userGoal,
-      //     });
-      //   if (insertUserRegistrationDetailsError) {
-      //     throw insertUserRegistrationDetailsError;
-      //   }
+      if (this.user) {
+        // store user registration details in supabase registration table
+        const { error: insertUserRegistrationDetailsError } =
+          await this.supabaseService.insertUserRegistrationDetails({
+            uid: this.user.uid,
+            name: this.userName,
+            age: this.userAge,
+            gender: this.userGender,
+            height: this.userHeight,
+            weight: this.userWeight,
+            goal: this.userGoal,
+          });
+        if (insertUserRegistrationDetailsError) {
+          throw insertUserRegistrationDetailsError;
+        }
 
-      //   // update user table with registration_complete to true
-      //   await this.supabaseService.updateUser(this.user.uid, true);
+        // update user table with registration_complete to true
+        await this.supabaseService.updateUser(this.user.uid, true);
 
-      //   this.router.navigate(['./dashboard']);
-      // }
+        this.router.navigate(['./dashboard']);
+      }
     } catch (error) {
       console.error('Something went wrong!', error);
       this.spinnerService.hideSpinner();
